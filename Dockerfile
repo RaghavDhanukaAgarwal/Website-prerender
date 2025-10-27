@@ -13,4 +13,4 @@ ENV CACHE_ENABLED=true
 ENV LOG_LEVEL=info
 
 # Start prerender
-CMD ["prerender"]
+CMD ["npx", "prerender"]
