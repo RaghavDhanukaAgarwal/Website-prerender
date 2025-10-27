@@ -1,6 +1,18 @@
 import prerender from "prerender";
+import os from "os";
+
+const isWindows = os.platform() === "win32";
+
+// Automatically choose Chrome path based on environment
+const chromePath = isWindows
+  ? "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+  : "/usr/bin/google-chrome"; // Render + Linux path
+
+console.log("🚀 Starting Prerender Server...");
+console.log("🧭 Using Chrome path:", chromePath);
 
 const server = prerender({
+  chromeLocation: chromePath,
   chromeFlags: [
     "--headless",
     "--disable-gpu",
@@ -14,4 +26,4 @@ const server = prerender({
 
 server.start();
 
-console.log("✅ Prerender server started on port", process.env.PORT || 3000);
+console.log("✅ Prerender server started successfully on port 3000");
