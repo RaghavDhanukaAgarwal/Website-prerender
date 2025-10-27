@@ -1,16 +1,19 @@
-# Use lightweight Node.js
+# Use official Node.js 20 Alpine image
 FROM node:20-alpine
 
-# Install prerender globally
+# Set working directory
+WORKDIR /app
+
+# Install Prerender globally
 RUN npm install -g prerender
 
-# Expose the port Prerender uses
+# Expose the port Render expects
 EXPOSE 3000
 
-# Environment variables
+# Set environment variables
 ENV PORT=3000
 ENV CACHE_ENABLED=true
 ENV LOG_LEVEL=info
 
-# Start prerender
-CMD ["npx", "prerender"]
+# Start the Prerender server
+CMD ["prerender"]
