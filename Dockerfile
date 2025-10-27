@@ -1,15 +1,19 @@
+# Use Node LTS
 FROM node:20-alpine
 
-RUN apk add --no-cache chromium && \
-    npm install -g prerender
-
-ENV PORT=3000 \
-    PRERENDER_NUM_WORKERS=1 \
-    PRERENDER_NUM_ITERATIONS=1 \
-    PRERENDER_PAGE_DONE_CHECK_INTERVAL=500
-
-COPY server.js /app/server.js
+# Set working directory
 WORKDIR /app
 
+# Install Chrome dependencies
+RUN apk add --no-cache chromium
+
+# Copy package definition and install locally
+COPY package.json package-lock.json* ./
+RUN npm install
+
+# Copy the rest of the app
+COPY . .
+
+# Expose port and run
 EXPOSE 3000
 CMD ["node", "server.js"]
