@@ -1,19 +1,15 @@
-# Use official Node.js 20 Alpine image
 FROM node:20-alpine
 
-# Set working directory
+RUN apk add --no-cache chromium && \
+    npm install -g prerender
+
+ENV PORT=3000 \
+    PRERENDER_NUM_WORKERS=1 \
+    PRERENDER_NUM_ITERATIONS=1 \
+    PRERENDER_PAGE_DONE_CHECK_INTERVAL=500
+
+COPY server.js /app/server.js
 WORKDIR /app
 
-# Install Prerender globally
-RUN npm install -g prerender
-
-# Expose the port Render expects
 EXPOSE 3000
-
-# Set environment variables
-ENV PORT=3000
-ENV CACHE_ENABLED=true
-ENV LOG_LEVEL=info
-
-# Start the Prerender server
-CMD ["prerender"]
+CMD ["node", "server.js"]
