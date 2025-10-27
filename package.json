@@ -2,12 +2,11 @@
   "name": "prerender-backend",
   "version": "1.0.0",
   "main": "server.js",
-  "type": "commonjs",
-  "dependencies": {
-    "prerender": "latest",
-    "puppeteer": "latest"
-  },
   "scripts": {
     "start": "node server.js"
+  },
+  "dependencies": {
+    "prerender": "^5.21.6",
+    "puppeteer": "latest"
   }
 }
