@@ -4,7 +4,8 @@
   "main": "server.js",
   "type": "commonjs",
   "dependencies": {
-    "prerender": "latest"
+    "prerender": "latest",
+    "puppeteer": "latest"
   },
   "scripts": {
     "start": "node server.js"

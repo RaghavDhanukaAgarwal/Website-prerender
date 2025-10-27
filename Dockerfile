@@ -1,19 +1,13 @@
-# Use Node LTS
-FROM node:20-alpine
+# Use Node with Debian (not Alpine) for easier Chrome support
+FROM node:20-slim
 
-# Set working directory
 WORKDIR /app
 
-# Install Chrome dependencies
-RUN apk add --no-cache chromium
-
-# Copy package definition and install locally
 COPY package.json package-lock.json* ./
 RUN npm install
 
-# Copy the rest of the app
 COPY . .
 
-# Expose port and run
 EXPOSE 3000
-CMD ["node", "server.js"]
+
+CMD ["npm", "start"]
