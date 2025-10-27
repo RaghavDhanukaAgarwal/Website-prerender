@@ -1,5 +1,5 @@
-import prerender from 'prerender';
-import puppeteer from 'puppeteer';
+const prerender = require('prerender');
+const puppeteer = require('puppeteer');
 
 const server = prerender({
   chromeLocation: puppeteer.executablePath(),
