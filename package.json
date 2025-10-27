@@ -4,7 +4,7 @@
   "main": "server.js",
   "type": "commonjs",
   "dependencies": {
-    "prerender": "^5.24.0"
+    "prerender": "latest"
   },
   "scripts": {
     "start": "node server.js"
